@@ -35,7 +35,7 @@ void setup()
   can_bus.Initialize(ICAN::BaudRate::kBaud1M);
 
   // Initialize our timer(s)
-  timer_group.AddTimer(100, UpdateIMDStatus);
+  timer_group.AddTimer(1, UpdateIMDStatus);
 }
 
 void loop()

@@ -14,7 +14,7 @@ IMDBoard::IMDBoard()
 
 IMDBoard::IMDState IMDBoard::UpdateState()
 {
-    if (digitalRead(IMD_PIN) == HIGH)
+    if (digitalRead(IMD_PIN) == LOW)
     {
         return IMDState::kActive;
     }

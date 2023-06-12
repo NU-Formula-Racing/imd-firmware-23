@@ -20,26 +20,26 @@ CANTXMessage<1> imd_tx_message{can_bus, imd_board.kCANID, 1, 100, timer_group, i
 
 void UpdateIMDStatus()
 {
-  imd_status_signal = imd_board.UpdateState();
+    imd_status_signal = imd_board.state;
 }
 
 void setup()
 {
 
 #ifdef SERIAL_DEBUG
-  // Initialize serial output
-  Serial.begin(9600);
+    // Initialize serial output
+    Serial.begin(9600);
 #endif
 
-  // Initialize CAN bus.
-  can_bus.Initialize(ICAN::BaudRate::kBaud1M);
+    // Initialize CAN bus.
+    can_bus.Initialize(ICAN::BaudRate::kBaud1M);
 
-  // Initialize our timer(s)
-  timer_group.AddTimer(1, UpdateIMDStatus);
+    // Initialize our timer(s)
+    timer_group.AddTimer(1, UpdateIMDStatus);
 }
 
 void loop()
 {
-  can_bus.Tick();
-  timer_group.Tick(millis());
+    can_bus.Tick();
+    timer_group.Tick(millis());
 }
